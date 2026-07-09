@@ -19,18 +19,20 @@ img {
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-bottom: 2em;
+   margin: 4em 0;
 }
 
 .quote-btn {
+   display: inline-flex;
+   align-items: center;
    padding: 1rem 2rem;
    background-color: var(--color-accent);
    border: none;
-   border-radius: 5px;
+   border-radius: 8px;
    font-weight: 700;
+   box-shadow: 4px 4px 4px var(--color-secondary);
 }
 
 .quote-btn:hover {
-   box-shadow: 4px 4px 4px var(--color-secondary);
    text-decoration: underline;
 }
