@@ -1,0 +1,32 @@
+.container {
+  padding: .5em;
+  background-color: var(--color-accent);
+}
+
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: center;
+    margin: 1em 0;
+    gap: 10%;
+}
+
+.service {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: .5em;
+}
+
+.service-check {
+    background-color: var(--color-bg);
+    border-radius: 50%;
+    padding: .25em .5em;
+    font-weight: 700;
+}
+
+/* .service-type {
+    font-weight: 700;
+} */

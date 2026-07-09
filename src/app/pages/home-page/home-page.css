@@ -1,0 +1,63 @@
+.background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/HomeBackground.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.CTA {
+    color: var(--color-accent);
+    font-weight: 800;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    padding: 0;
+    margin: 0;
+    font-size: 3.5rem;
+    margin: 1rem 0;
+}
+
+.CTA > span {
+    color: #F5F5F3;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+    margin: 1rem 0;
+}
+
+.social-link > button, a {
+    border-radius: 50%;
+    padding: 1.5em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(172, 172, 172);
+    background-color: #F5F5F3;
+    box-shadow: 2px 2px 2px #1E2124;
+    height: 4.5em;
+    width: 4.5em;
+}
+
+
+.social-link > button:hover, a:hover {
+    box-shadow: 5px 5px 4px #1E2124;
+    background-color: var(--color-accent);
+    border: none;
+}
+
+.social_icon {
+    height: 120%;
+}
+
+header {
+    text-align: center;
+    margin: 2em;
+}

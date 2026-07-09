@@ -1,0 +1,108 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-header);
+  max-height: var(--header-height);
+  box-shadow: 4px 4px 4px rgb(17, 17, 17);
+}
+
+.site_logo {
+    max-height: 100%;
+    padding: .8rem;
+}
+
+.header_nav_mobile {
+    margin: auto 10px;
+}
+
+.header_logo {
+    display: flex;
+}
+
+.header_logo > a {
+    width: 4em;
+}
+
+
+.side_navbar_container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #6e737781;
+}
+
+.side_navbar_inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: .8rem;
+    height: 100%;
+}
+
+.navbar_close {
+    margin-left: auto;
+    border: none;
+    background: none;
+    font-size: larger;
+}
+
+.navbar_items {
+    list-style-type: none;
+    padding: 20% 0;
+}
+
+.navbar_item {
+    padding: .8rem;
+    border-radius: 4px;
+    width: 100%;
+    margin: .8rem 0;
+    border-bottom: 2px solid var(--color-accent);
+    text-align: start;
+}
+
+
+.navbar_item:hover {
+    cursor: pointer;
+    background-color: var(--color-accent);
+}
+
+.navbar_item > button {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: large;
+}
+
+.enter-animation {
+  animation: navbarSlideIn 0.45s ease-out;
+}
+
+.exit-animation {
+  animation: navbarSlideIn 0.45s ease-in reverse;
+}
+
+.header_nav {
+    border: none;
+    background: none;
+    font-size: 30px;
+    color: #F5F5F3;
+}
+
+@keyframes navbarSlideIn {
+    from {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}

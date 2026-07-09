@@ -1,0 +1,30 @@
+<nav class="site-header">
+    <div class="header_logo">
+        <a href="/">
+            <img class="site_logo" src="Logo.png" alt="Logo" />
+        </a>
+    </div>
+    <div class="header_nav_mobile">
+        <button class="header_nav" (click)="toggleNav()">
+            &#9776;
+        </button>
+    </div>
+    @if(mobileNavOpen()) {
+        <div class="side_navbar_container" animate.enter="enter-animation" animate.exit="exit-animation">
+            <div class="side_navbar_inner">
+                <button class="navbar_close" (click)="toggleNav()">&#10005;</button>
+                <ul class="navbar_items">
+                    <li class="navbar_item">
+                        <button>Do This</button>
+                    </li>
+                    <li class="navbar_item">
+                        <button>Do This</button>
+                    </li>
+                    <li class="navbar_item">
+                        <button>Do This</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+</nav>

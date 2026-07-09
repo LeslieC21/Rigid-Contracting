@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-bg: #F5F5F3;
+  --color-text: #1E2124;
+  --color-accent: #8CC63F;
+/*  --color-accent: #9eee84;*/
+  --color-secondary: #6E7377;
+  --color-header: #2B3138;
+  --header-height: 4.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100vh;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

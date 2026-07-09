@@ -1,0 +1,7 @@
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-header);
+    height: var(--header-height);
+    box-shadow: 4px 4px 4px rgb(17, 17, 17);
+}

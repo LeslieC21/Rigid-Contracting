@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\public",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\layout",
+    "\\src\\app\\layout\\header",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\home-page",
+    "\\src\\app\\pages\\home-page\\components",
+    "\\src\\app\\pages\\home-page\\components\\projects-page",
+    "\\src\\app\\pages\\home-page\\components\\why-us-page"
+  ],
+  "SelectedNode": "\\src\\app\\pages\\home-page\\components\\why-us-page\\why-us-page.html",
+  "PreviewInSolutionExplorer": false
+}
