@@ -74,6 +74,10 @@ dragBarMouseDown(e: MouseEvent) {
 
 
   ngAfterViewInit() {
+    // Fix bug where after you resize the window the bar is at a different position than the reveal
+    window.addEventListener('resize', () => {
+      this.setInitialSplit(50);
+    })
     this.setInitialSplit(50); // 50% split to start
   }
 

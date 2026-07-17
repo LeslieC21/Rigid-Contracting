@@ -51,6 +51,7 @@
     box-shadow: 5px 5px 4px #1E2124;
     background-color: var(--color-accent);
     border: none;
+    cursor: pointer;
 }
 
 .social_icon {
@@ -60,4 +61,15 @@
 header {
     text-align: center;
     margin: 2em;
+}
+
+/* Laptops/Tablets etc. */
+@media (min-width: 600px) {
+    #phone {
+        display: none;
+    }
+
+    .background {
+        height: 86vh;
+    }
 }

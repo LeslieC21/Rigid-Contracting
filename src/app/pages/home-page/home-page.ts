@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import { BusinessReviews } from './components/business-reviews/business-reviews';
 import { Services }  from './components/services/services';
@@ -8,7 +7,7 @@ import { WhyUsPage } from './components/why-us-page/why-us-page';
 
 @Component({
   selector: 'app-home-page',
-  imports: [BusinessReviews, Services, ProjectsPage, WhyUsPage, RouterLink],
+  imports: [BusinessReviews, Services, ProjectsPage, WhyUsPage],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })

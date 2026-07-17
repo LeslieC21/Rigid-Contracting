@@ -1,5 +1,6 @@
 .container {
     padding: 2em 0;
+    background-color: var(--color-accent);
 }
 
 .container > h1 {
@@ -37,11 +38,17 @@
     text-align: center;
 }
 
-.container {
-    background-color: var(--color-accent);
-}
-
 .review {
     margin-top: .2em;
     text-align: center;
+}
+
+@media(min-width: 600px) {
+    .review {
+        margin: 1em 1em;
+    }
+
+    .review-list {
+        justify-content: space-evenly;
+    }
 }

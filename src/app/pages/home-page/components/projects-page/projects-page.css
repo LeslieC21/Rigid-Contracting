@@ -3,9 +3,9 @@
 }
 
 .project {
+  box-sizing: border-box;
   margin: 4rem 1rem;
   background-color: #eaeaea;
-  /* background-color: var(--color-secondary); */
   border-radius: 5px;
   padding: 1rem;
   box-shadow: 1px 1px 10px rgb(0, 0, 0, 0.72);
@@ -17,11 +17,16 @@
 }
 
 .project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 10%;
 }
 
 header {
     padding: 1rem;
+    margin: 4em;
     border-bottom: 1px solid var(--color-secondary);
 }
 
@@ -31,4 +36,30 @@ header > h1 {
 
 header > p {
     text-indent: 5px;
+}
+
+@media(min-width: 600px) {
+  .project {
+    width: auto;
+    box-sizing: border-box;
+    margin: 2rem 0rem;
+    background-color: #eaeaea;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 1px 1px 10px rgb(0, 0, 0, 0.72);
+  }
+
+  .project-list {
+    gap: 2%;
+  }
+
+  .container {
+    width: 90%;
+    width: auto;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
 }
