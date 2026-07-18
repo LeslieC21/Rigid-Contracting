@@ -1,33 +1,47 @@
-<nav class="site-footer">
-    <div class="logo">
-        <img src="Logo.png" alt="Logo"/>
-        <h2>Rigid Contracting</h2>
-    </div>
-    <div class="content">
-        <div class="contact-us">
-            <h3>[ Contact Us ]</h3>
-            <div class="owners">
-                <div class="owner">
-                    <h3>Austin Richards (Co-Owner)</h3>
-                    <p>Phone: (606) 484-0606</p>
-                    <p>Email: austin.richards@rigidcontractingky.com</p>
-                </div>
-                <div class="owner">
-                    <h3>Justice Reed (Co-Owner)</h3>
-                    <p>Phone: (859)595-8172</p>
-                    <p>Email: justice.reed@rigidcontractingky.com</p>
-                </div>
-            </div>
-            6224 US HWY 460 W. <br />
-            Frenchburg, KY 40322
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="/Logo.png" alt="Rigid Contracting logo" width="48" height="48" />
+        <div>
+          <h2>Rigid Contracting</h2>
+          <p>{{ business.tagline }}</p>
         </div>
-        <div class="rights-links">
-            <p>© {{ year }} Rigid Contracting. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://www.facebook.com/p/Rigid-Contracting-61576563761197/" target="_blank" rel="noopener noreferrer">
-                    Facebook
-                </a>
-            </div>
-        </div>
+      </div>
+      <p class="brand-copy">
+        Family-owned construction serving {{ business.serviceArea }}.
+      </p>
     </div>
-</nav>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul>
+        @for (link of quickLinks; track link.path) {
+          <li>
+            <a [routerLink]="link.path">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contact</h3>
+      @for (owner of owners; track owner.email) {
+        <div class="owner">
+          <p class="owner-name">{{ owner.name }} ({{ owner.role }})</p>
+          <a [href]="owner.phoneHref">{{ owner.phone }}</a>
+          <a [href]="'mailto:' + owner.email">{{ owner.email }}</a>
+        </div>
+      }
+      <p class="address">
+        {{ business.addressLine1 }}<br />
+        {{ business.city }}, {{ business.state }} {{ business.zip }}
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ year }} Rigid Contracting. All rights reserved.</p>
+    <a [href]="business.facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </div>
+</footer>

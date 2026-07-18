@@ -1,42 +1,61 @@
-<div>
-  <div class="background">
-    <header>
-      <h1 class="CTA">
-        <span>
-          BUILT FOR TODAY.
-        </span>
-        <br />
-        BUILT TO LAST.
-      </h1>
-      <p style="color: #F5F5F3; text-shadow: 2px 2px 4px black;">For all your construction needs: <br /> Check us out on facebook, see some of our finished projects or contact us for a <strong>free quote!</strong></p>
-    </header>
-
-    <ul class="social-links">
-      <li class="social-link">
-        <a href="https://www.facebook.com/p/Rigid-Contracting-61576563761197/" target="_blank" rel="noopener noreferrer">
-          <img class="social_icon" src="facebookIcon.png" alt="Facebook" />
-        </a>
-      </li>
-      <li class="social-link">
-        <a>
-          <img class="social_icon" (click)="scrollToPhotos()" src="camera.png" alt="Photos" />
-        </a>
-      </li>
-      <li class="social-link">
-        <a href="mailto:austin.richards@rigidcontractingky.com">
-          <img class="social_icon" src="email.png" alt="Email Us" />
-        </a>
-      </li>
-      <li class="social-link" id="phone">
-        <a tel="606-484-0606">
-          <img class="social_icon" src="phone.png" alt="Call Us" />
-        </a>
-      </li>
-    </ul>
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-content">
+    <p class="eyebrow">Central Kentucky Construction</p>
+    <h1 id="hero-heading" class="cta">
+      <span>Built for today.</span>
+      <br />
+      Built to last.
+    </h1>
+    <p class="hero-text">
+      Family-owned construction for builds, remodeling, excavation, and more across Menifee,
+      Montgomery, Bath, Rowan, Clark and surrounding counties.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/contact" class="btn btn-primary">Get a Free Quote</a>
+      <a routerLink="/projects" class="btn btn-ghost">See Our Work</a>
+    </div>
   </div>
+  <a class="scroll-hint" href="#highlights" aria-label="Scroll to services highlights">
+    <span aria-hidden="true">↓</span>
+  </a>
+</section>
 
-  <app-services></app-services>
-  <app-why-us-page></app-why-us-page>
-  <app-projects-page id="project-photos"></app-projects-page>
-  <app-business-reviews></app-business-reviews>
-</div>
+<section id="highlights" class="highlights" aria-labelledby="highlights-heading">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="eyebrow dark">What we offer</p>
+      <h2 id="highlights-heading">Services Built Around Your Project</h2>
+      <p>
+        From turn-key builds to remodeling and excavation, we bring reliable craftsmanship to every
+        job.
+      </p>
+    </div>
+
+    <ul class="highlight-grid">
+      @for (service of highlightServices; track service.title) {
+        <li class="highlight-card">
+          <div class="highlight-icon" aria-hidden="true">{{ service.icon }}</div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </li>
+      }
+    </ul>
+
+    <div class="section-cta">
+      <a routerLink="/services" class="btn btn-secondary">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="home-cta" aria-labelledby="home-cta-heading">
+  <div class="section-inner home-cta-inner">
+    <div>
+      <h2 id="home-cta-heading">Ready to start your next project?</h2>
+      <p>Contact us today for a free quote — we are here to help bring your vision to life.</p>
+    </div>
+    <div class="home-cta-actions">
+      <a routerLink="/contact" class="btn btn-primary">Contact Us</a>
+      <a routerLink="/about" class="btn btn-ghost">About the Owners</a>
+    </div>
+  </div>
+</section>

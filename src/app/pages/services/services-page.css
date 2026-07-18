@@ -33,52 +33,51 @@
   line-height: 1.6;
 }
 
-.about-section {
+.services-section {
   max-width: var(--content-max);
   margin: 0 auto;
   padding: var(--space-3xl) var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3xl);
 }
 
-.about-row {
+.services-grid {
   display: grid;
-  gap: var(--space-xl);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
 }
 
-.about-copy h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  margin-bottom: var(--space-md);
-  color: var(--color-text);
-}
-
-.about-copy p {
-  color: var(--color-secondary);
-  line-height: 1.7;
-  margin-bottom: var(--space-md);
-}
-
-.about-row img {
-  width: 100%;
-  height: auto;
+.service-card {
+  background: #fff;
+  border: 1px solid #e4e6e8;
   border-radius: var(--radius-lg);
-  object-fit: cover;
-  box-shadow: var(--shadow-md);
-  aspect-ratio: 4 / 3;
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.owner-list {
-  margin-top: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+.service-card h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-sm);
   color: var(--color-text);
+}
+
+.service-card p {
+  color: var(--color-secondary);
+  line-height: 1.65;
 }
 
 .cta-band {
+  margin-top: var(--space-3xl);
   text-align: center;
   background: var(--color-header);
   color: var(--color-bg);
@@ -96,23 +95,19 @@
   margin-bottom: var(--space-lg);
 }
 
-.cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  justify-content: center;
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
-  .about-row {
-    grid-template-columns: 1fr 1fr;
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .about-row.reverse .about-copy {
-    order: 2;
-  }
-
-  .about-row.reverse img {
-    order: 1;
+  .services-grid .service-card:nth-child(4),
+  .services-grid .service-card:nth-child(5) {
+    grid-column: span 1;
   }
 }

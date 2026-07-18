@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, inject } from '@angular/core';
+import { Component, Input, ElementRef, inject, OnDestroy, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-bfr-aft-photos',
@@ -6,24 +6,27 @@ import { Component, Input, ElementRef, inject } from '@angular/core';
   templateUrl: './bfr-aft-photos.html',
   styleUrl: './bfr-aft-photos.css',
 })
-export class BfrAftPhotos {
-  // Injects
+export class BfrAftPhotos implements AfterViewInit, OnDestroy {
   eRef = inject(ElementRef);
 
-  // Drag bar
-  pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
+  pos1 = 0;
+  pos2 = 0;
+  pos3 = 0;
+  pos4 = 0;
+
   @Input({ required: true }) beforePhoto!: string;
   @Input({ required: true }) afterPhoto!: string;
+  @Input() beforeAlt = 'Before photo';
+  @Input() afterAlt = 'After photo';
 
-dragBarMouseDown(e: MouseEvent) {
+  private onResize = () => this.setInitialSplit(50);
+
+  dragBarMouseDown(e: MouseEvent) {
     e.preventDefault();
-
-    // Grab initial position of the drag bar
     this.pos3 = e.clientX;
-
-  document.onmousemove = this.dragElement.bind(this);
-  document.onmouseup = this.dragBarMouseUp.bind(this);
-}
+    document.onmousemove = this.dragElement.bind(this);
+    document.onmouseup = this.dragBarMouseUp.bind(this);
+  }
 
   dragBarMouseUp() {
     document.onmousemove = null;
@@ -41,17 +44,14 @@ dragBarMouseDown(e: MouseEvent) {
     this.pos3 = e.clientX;
 
     let newLeft = dragBar!.offsetLeft - this.pos1;
-
     const minLeft = 0;
     const maxLeft = parentWidth - dragBarWidth;
 
     newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
-    dragBar!.style.left = newLeft + "px";
+    dragBar!.style.left = newLeft + 'px';
 
-    // Set the image visibility based on the drag bar position
     const beforeImage = host.querySelector('.before-image') as HTMLElement;
     const afterImage = host.querySelector('.after-image') as HTMLElement;
-
     const percentageVisible = (newLeft / maxLeft) * 100;
     beforeImage!.style.clipPath = `inset(0 ${100 - percentageVisible}% 0 0)`;
     afterImage!.style.clipPath = `inset(0 0 0 ${percentageVisible}%)`;
@@ -62,7 +62,11 @@ dragBarMouseDown(e: MouseEvent) {
     const dragBar = host.querySelector('.drag-bar') as HTMLElement;
     const beforeImage = host.querySelector('.before-image') as HTMLElement;
     const afterImage = host.querySelector('.after-image') as HTMLElement;
-    const parent = dragBar.parentElement as HTMLElement;
+    const parent = dragBar?.parentElement as HTMLElement | null;
+
+    if (!dragBar || !beforeImage || !afterImage || !parent) {
+      return;
+    }
 
     const maxLeft = parent.offsetWidth - dragBar.offsetWidth;
     const initialLeft = (percent / 100) * maxLeft;
@@ -72,16 +76,13 @@ dragBarMouseDown(e: MouseEvent) {
     afterImage.style.clipPath = `inset(0 0 0 ${percent}%)`;
   }
 
-
   ngAfterViewInit() {
-    // Fix bug where after you resize the window the bar is at a different position than the reveal
-    window.addEventListener('resize', () => {
-      this.setInitialSplit(50);
-    })
-    this.setInitialSplit(50); // 50% split to start
+    window.addEventListener('resize', this.onResize);
+    this.setInitialSplit(50);
   }
 
   ngOnDestroy() {
+    window.removeEventListener('resize', this.onResize);
     document.onmousemove = null;
     document.onmouseup = null;
   }

@@ -33,52 +33,57 @@
   line-height: 1.6;
 }
 
-.about-section {
+.projects-section {
   max-width: var(--content-max);
   margin: 0 auto;
   padding: var(--space-3xl) var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3xl);
 }
 
-.about-row {
+.project-list {
   display: grid;
-  gap: var(--space-xl);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
 }
 
-.about-copy h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  margin-bottom: var(--space-md);
-  color: var(--color-text);
-}
-
-.about-copy p {
-  color: var(--color-secondary);
-  line-height: 1.7;
-  margin-bottom: var(--space-md);
-}
-
-.about-row img {
-  width: 100%;
-  height: auto;
+.project-card {
+  background: #fff;
   border-radius: var(--radius-lg);
-  object-fit: cover;
+  padding: var(--space-lg);
   box-shadow: var(--shadow-md);
-  aspect-ratio: 4 / 3;
-}
-
-.owner-list {
-  margin-top: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  color: var(--color-text);
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.project-tag {
+  align-self: flex-start;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.project-card h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  text-align: center;
+  width: 100%;
+}
+
+.project-placeholder {
+  width: min(100%, 30em);
+  min-height: 20em;
+  border-radius: var(--radius-md);
+  background: #e8e9ea;
 }
 
 .cta-band {
+  margin-top: var(--space-3xl);
   text-align: center;
   background: var(--color-header);
   color: var(--color-bg);
@@ -96,23 +101,13 @@
   margin-bottom: var(--space-lg);
 }
 
-.cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  justify-content: center;
-}
-
 @media (min-width: 1024px) {
-  .about-row {
-    grid-template-columns: 1fr 1fr;
+  .project-list {
+    grid-template-columns: 1fr;
   }
 
-  .about-row.reverse .about-copy {
-    order: 2;
-  }
-
-  .about-row.reverse img {
-    order: 1;
+  .project-placeholder {
+    width: min(100%, 50em);
+    min-height: 35em;
   }
 }

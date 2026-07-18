@@ -1,1 +1,72 @@
-<p>about-us works!</p>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">Our story</p>
+    <h1>About Rigid Contracting</h1>
+    <p class="lede">
+      A joint family-owned construction business serving {{ business.serviceArea }}.
+    </p>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-row">
+    <div class="about-copy">
+      <h2>Why Choose Us?</h2>
+      <p>
+        Here at Rigid Contracting, we are more than just a business — we are your partner in
+        progress. Whether you are looking to build your dream home, remodel your current space, or
+        tackle a complex construction project, we are here to help you every step of the way.
+      </p>
+      <p>
+        Our team of experienced professionals is dedicated to providing you with the highest quality
+        service and craftsmanship, ensuring that your project is completed on time and within
+        budget.
+      </p>
+    </div>
+    <img
+      src="/pic.jpg"
+      alt="Rigid Contracting crew working on a construction project"
+      loading="lazy"
+      width="800"
+      height="600"
+    />
+  </div>
+
+  <div class="about-row reverse">
+    <div class="about-copy">
+      <h2>Who Are We?</h2>
+      <p>
+        We are a joint family-owned construction business proud to serve Central Kentucky. We pride
+        ourselves on our commitment to excellence, and we are passionate about helping our clients
+        achieve their goals.
+      </p>
+      <p>
+        Contact us today to learn more about our services and how we can help you bring your vision
+        to life.
+      </p>
+      <ul class="owner-list">
+        @for (owner of owners; track owner.email) {
+          <li>
+            <strong>{{ owner.name }}</strong> — {{ owner.role }}
+          </li>
+        }
+      </ul>
+    </div>
+    <img
+      src="/airViewBuilding.jpg"
+      alt="Aerial view of a building project completed by Rigid Contracting"
+      loading="lazy"
+      width="800"
+      height="600"
+    />
+  </div>
+
+  <div class="cta-band">
+    <h2>Let’s build something lasting</h2>
+    <p>{{ business.tagline }}</p>
+    <div class="cta-actions">
+      <a routerLink="/contact" class="btn btn-primary">Get a Free Quote</a>
+      <a routerLink="/services" class="btn btn-secondary">View Services</a>
+    </div>
+  </div>
+</section>

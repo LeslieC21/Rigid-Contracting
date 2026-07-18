@@ -1,0 +1,65 @@
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">Get in touch</p>
+    <h1>Contact Us</h1>
+    <p class="lede">
+      Ready for a free quote? Reach out to the owners directly — we serve
+      {{ business.serviceArea }}.
+    </p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-cards">
+      @for (owner of owners; track owner.email) {
+        <article class="contact-card">
+          <h2>{{ owner.name }}</h2>
+          <p class="role">{{ owner.role }}</p>
+          <a class="contact-link" [href]="owner.phoneHref" [attr.aria-label]="'Call ' + owner.name">
+            {{ owner.phone }}
+          </a>
+          <a
+            class="contact-link"
+            [href]="'mailto:' + owner.email"
+            [attr.aria-label]="'Email ' + owner.name"
+          >
+            {{ owner.email }}
+          </a>
+        </article>
+      }
+
+      <article class="contact-card address-card">
+        <h2>Visit / Mail</h2>
+        <p>
+          {{ business.addressLine1 }}<br />
+          {{ business.city }}, {{ business.state }} {{ business.zip }}
+        </p>
+        <a
+          class="btn btn-primary"
+          href="mailto:austin.richards@rigidcontractingky.com?subject=Free%20Quote%20Request"
+        >
+          Request a Free Quote
+        </a>
+        <a
+          class="btn btn-secondary"
+          [href]="business.facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Message us on Facebook
+        </a>
+      </article>
+    </div>
+
+    <div class="map-wrap">
+      <iframe
+        title="Rigid Contracting location on Google Maps"
+        [src]="mapSrc"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
