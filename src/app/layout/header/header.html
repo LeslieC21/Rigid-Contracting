@@ -1,42 +1,75 @@
-<nav class="site-header">
-    <div class="header_logo">
-        <a href="/">
-            <img class="site_logo" src="Logo.png" alt="Logo" />
-        </a>
-    </div>
-    <div class="title">
-        <a href="/">
-            <h1>Rigid Contracting</h1>
-        </a>
-    </div>
-    <div class="header_nav_desktop">
-        <ul class="header_nav_items">
-            <li class="header_nav_item">
-                <a href="/AboutUs">About</a>
-            </li>
-            <li class="header_nav_item">
-                <a href="/about">Contact Us</a>
-            </li>
-        </ul>
-    </div>
-    <div class="header_nav_mobile">
-        <button class="header_nav" (click)="toggleNav()">
-            &#9776;
+<nav class="site-header" aria-label="Main navigation">
+  <div class="header_logo">
+    <a routerLink="/" aria-label="Rigid Contracting home">
+      <img class="site_logo" src="/Logo.png" alt="Rigid Contracting logo" width="64" height="64" />
+    </a>
+  </div>
+
+  <div class="title">
+    <a routerLink="/">
+      <span class="site-name">Rigid Contracting</span>
+    </a>
+  </div>
+
+  <div class="header_nav_desktop">
+    <ul class="header_nav_items">
+      @for (item of navItems; track item.path) {
+        <li class="header_nav_item">
+          <a [routerLink]="item.path" routerLinkActive="active">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="header_nav_mobile">
+    <button
+      class="header_nav"
+      type="button"
+      (click)="toggleNav()"
+      [attr.aria-expanded]="mobileNavOpen()"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+    >
+      &#9776;
+    </button>
+  </div>
+
+  @if (mobileNavOpen()) {
+    <div
+      class="side_navbar_container"
+      (click)="closeNav()"
+      animate.enter="enter-animation"
+      animate.exit="exit-animation"
+    >
+      <div
+        id="mobile-nav"
+        class="side_navbar_inner"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+        (click)="$event.stopPropagation()"
+      >
+        <button
+          #closeButton
+          class="navbar_close"
+          type="button"
+          (click)="closeNav()"
+          aria-label="Close navigation menu"
+        >
+          &#10005;
         </button>
+        <ul class="navbar_items">
+          @for (item of navItems; track item.path) {
+            <li class="navbar_item">
+              <a [routerLink]="item.path" routerLinkActive="active" (click)="closeNav()">
+                {{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
     </div>
-    @if(mobileNavOpen()) {
-        <div class="side_navbar_container" animate.enter="enter-animation" animate.exit="exit-animation">
-            <div class="side_navbar_inner">
-                <button class="navbar_close" (click)="toggleNav()">&#10005;</button>
-                <ul class="navbar_items">
-                    <li class="navbar_item">
-                        <a  href="/AboutUs">About Us</a>
-                    </li>
-                    <li class="navbar_item">
-                        <a>Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    }
+  }
 </nav>

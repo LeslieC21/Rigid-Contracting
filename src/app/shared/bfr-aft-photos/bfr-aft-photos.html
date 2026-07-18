@@ -1,0 +1,14 @@
+<div class="images">
+  <img class="before-image" [src]="beforePhoto" [alt]="beforeAlt" loading="lazy" />
+  <img class="after-image" [src]="afterPhoto" [alt]="afterAlt" loading="lazy" />
+  <div
+    class="drag-bar"
+    role="slider"
+    tabindex="0"
+    aria-label="Compare before and after images"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="50"
+    (mousedown)="dragBarMouseDown($event)"
+  ></div>
+</div>

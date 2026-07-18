@@ -1,7 +1,13 @@
-footer {
-    margin-bottom: auto;
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    /* margin: 2em 0; */
+  flex: 1;
+}
+
+main:focus {
+  outline: none;
 }

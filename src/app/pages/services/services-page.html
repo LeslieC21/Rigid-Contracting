@@ -1,0 +1,28 @@
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">What we do</p>
+    <h1>Our Services</h1>
+    <p class="lede">
+      From full builds to remodeling and excavation, Rigid Contracting delivers quality
+      craftsmanship across Central Kentucky.
+    </p>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="services-grid">
+    @for (service of services; track service.title) {
+      <article class="service-card">
+        <div class="service-icon" aria-hidden="true">{{ service.icon }}</div>
+        <h2>{{ service.title }}</h2>
+        <p>{{ service.description }}</p>
+      </article>
+    }
+  </div>
+
+  <div class="cta-band">
+    <h2>Ready to get started?</h2>
+    <p>Tell us about your project and we will help you bring it to life.</p>
+    <a routerLink="/contact" class="btn btn-primary">Get a Free Quote</a>
+  </div>
+</section>

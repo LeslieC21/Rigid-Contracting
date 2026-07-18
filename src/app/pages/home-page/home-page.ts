@@ -1,21 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
-import { BusinessReviews } from './components/business-reviews/business-reviews';
-import { Services }  from './components/services/services';
-import { ProjectsPage } from './components/projects-page/projects-page';
-import { WhyUsPage } from './components/why-us-page/why-us-page';
+import { SeoService } from '../../shared/seo.service';
+import { SERVICES } from '../../shared/site-data';
 
 @Component({
   selector: 'app-home-page',
-  imports: [BusinessReviews, Services, ProjectsPage, WhyUsPage],
+  imports: [RouterLink],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
-export class HomePage {
-  scrollToPhotos() {
-    const target = document.getElementById("project-photos");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+export class HomePage implements OnInit {
+  private readonly seo = inject(SeoService);
+
+  readonly highlightServices = SERVICES.slice(0, 4);
+
+  ngOnInit(): void {
+    this.seo.update({
+      title: 'Rigid Contracting | Central Kentucky Construction Services',
+      description:
+        'Family-owned construction business in Frenchburg, KY serving Menifee, Montgomery, Bath, Rowan, Clark and surrounding counties. Builds, excavation, remodeling, demolition, and installations.',
+      path: '/',
+      image: '/HomeBackground.jpg',
+    });
   }
 }

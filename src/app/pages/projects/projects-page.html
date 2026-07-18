@@ -1,0 +1,36 @@
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="eyebrow">Our work</p>
+    <h1>Recent Projects</h1>
+    <p class="lede">
+      Click and drag the divider on each project to compare before and after photos.
+    </p>
+  </div>
+</section>
+
+<section class="projects-section">
+  <ul class="project-list">
+    @for (project of projects; track project.title) {
+      <li class="project-card">
+        <span class="project-tag">{{ project.category }}</span>
+        @defer (on viewport) {
+          <app-bfr-aft-photos
+            [beforePhoto]="project.beforePhoto"
+            [afterPhoto]="project.afterPhoto"
+            [beforeAlt]="project.beforeAlt"
+            [afterAlt]="project.afterAlt"
+          />
+        } @placeholder {
+          <div class="project-placeholder" aria-hidden="true"></div>
+        }
+        <h2>{{ project.title }}</h2>
+      </li>
+    }
+  </ul>
+
+  <div class="cta-band">
+    <h2>Have a project in mind?</h2>
+    <p>We would love to hear about it and provide a free quote.</p>
+    <a routerLink="/contact" class="btn btn-primary">Contact Us</a>
+  </div>
+</section>
