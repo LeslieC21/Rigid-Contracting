@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="header_background">
+    <header>
+        <h1 class="page_title">SOME OF OUR RECENT <span>PROJECTS</span></h1>
+        <p style="color: #F5F5F3; text-shadow: 2px 2px 4px black;">
+          <i>Click and drag the divider to compare the before and after images.</i>
+        </p>
+    </header>
+  </div>
+
+  <ul class="project-list">
+    @for(project of bfrAfrImages; track $index) {
+      <li class="project">
+        <app-bfr-aft-photos [index]="$index" [beforePhoto]="(project.before)" [afterPhoto]="(project.after)"></app-bfr-aft-photos>
+        <h2>{{ project.description }}</h2>
+      </li>
+    }
+  </ul>
+
+  <div class="plug">
+    <p>Like what you see?</p>
+    <div class="act-btn">
+        <a href="mailto:austin.richards@rigidcontractingky.com" class="quote-btn">GET A FREE QUOTE</a>
+    </div>
+  </div>
+
+  <div class="other_proj_photos">
+    <h2 class="title">Additional Project Photos</h2>
+    <div class="img_container">
+      <img class="other_photos" src="{{ projectPhotos.at(currentPhoto() ) }}" />
+      <div class="photo_slider">
+        <button (click)="nextPhoto()">&#8592;</button>
+        <button (click)="previousPhoto()">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,19 @@
 import { Routes } from '@angular/router';
 
-import { HomePage } from './pages/home-page/home-page';
-import { AboutUs } from './pages/about-us/about-us';
-
 export const routes: Routes = [
     {
         path: '',
-        component: HomePage,
-        title: 'Rigid Contracting'
+        loadComponent: () => import('./pages/home-page/home-page').then((m) => m.HomePage),
+        title: 'Rigid Contracting - Home'
     },
     {
         path: 'AboutUs',
-        component: AboutUs,
-        title: 'About Us'
+        loadComponent: () => import('./pages/about-us/about-us').then((m) => m.AboutUs),
+        title: 'Rigid Contracting - About Us'
+    },
+    {
+        path: 'Projects',
+        loadComponent: () => import('./pages/projects-page/projects-page').then((m) => m.ProjectsPage),
+        title: 'Rigid Contracting - Projects'
     },
 ];

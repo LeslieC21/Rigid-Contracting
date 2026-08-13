@@ -1,17 +1,30 @@
+.container {
+    text-align: center;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    padding: 0;
+    margin: 0;
+}
+
 .background {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/HomeBackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 80vh;
 
     display: flex;
+    max-height: 88%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.service {
+    max-height: 12%;
+}
+
 .CTA {
+    font-family: 'Noto Sans', 'Inter';
     color: var(--color-accent);
     font-weight: 800;
     text-align: center;

@@ -2,14 +2,23 @@
   position: absolute;
   z-index: 50;
   width: .5em;
-  border-radius: 2px;
+  border-radius: 8px;
   height: 100%;
-  /* background-color: #b6b6b6; */
-  background-color: var(--color-accent);
-  /* border: 2px solid #9b9b9b; */
-  border: 1px solid #538b0a;
+  background-color: #b6b6b6;
+  /* background-color: var(--color-header);  */
+  border: 2px solid #9b9b9b;
+  /* border: 2px solid var(--color-header); */
   cursor: ew-resize;
   top: 0;
+  left: 50%;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.72);
+}
+
+.dbAni {
+  animation-name: moveAni;
+  animation-duration: 9s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
 }
 
 .images {
@@ -31,6 +40,13 @@
   object-fit: cover;
 }
 
+.bfAni {
+  animation-name: beforeImgClipAni;
+  animation-duration: 9s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
 .after-image {
   position: absolute;
   top: 0;
@@ -40,9 +56,68 @@
   object-fit: cover;
 }
 
-@media(min-width:800px) {
+.afAni {
+  animation-name: afterImgClipAni;
+  animation-duration: 9s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+@keyframes moveAni {
+  0% {
+    left: 50%;
+  }
+  25% {
+    left: 20%;
+  }
+  75% {
+    left: 80%;
+  }
+  100% {
+    left: 50%;
+  }
+}
+
+@keyframes beforeImgClipAni {
+  0% {
+    clip-path: inset(0 50% 0 0);
+  }
+  25% {
+    clip-path: inset(0 80% 0 0);
+  }
+  75% {
+    clip-path: inset(0 20% 0 0);
+  }
+  100% {
+    clip-path: inset(0 50% 0 0);
+  }
+}
+
+@keyframes afterImgClipAni {
+  0% {
+    clip-path: inset(0 0 0 50%);
+  }
+  25% {
+    clip-path: inset(0 0 0 20%);
+  }
+  75% {
+    clip-path: inset(0 0 0 80%);
+  }
+  100% {
+    clip-path: inset(0 0 0 50%);
+  }
+}
+
+@media(min-width: 700px) {
+.images {
+    min-height: 30rem;
+    width: 40rem;
+  }
+}
+
+@media(min-width:820px) {
   .images {
-    min-height: 35em;
-    width: 50em;
+    min-height: 35rem;
+    width: 50rem;
   }
 }

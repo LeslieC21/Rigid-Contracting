@@ -2,7 +2,7 @@
   --color-bg: #F5F5F3;
   --color-text: #1E2124;
   --color-accent: #8CC63F;
-/*  --color-accent: #9eee84;*/
+ /* --color-accent: #96ec80; */
   --color-secondary: #6E7377;
   --color-header: #2B3138;
   --header-height: 4.5rem;
@@ -31,4 +31,12 @@ ul, li {
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+h1, h2, h3 {
+    font-family: 'Noto Sans';
+}
+
+p, span {
+    font-family: 'Inter';
 }

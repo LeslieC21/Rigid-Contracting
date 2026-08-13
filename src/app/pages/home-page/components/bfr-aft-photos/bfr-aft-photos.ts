@@ -14,16 +14,24 @@ export class BfrAftPhotos {
   pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
   @Input({ required: true }) beforePhoto!: string;
   @Input({ required: true }) afterPhoto!: string;
+  @Input({ required: true}) index!: number;
 
-dragBarMouseDown(e: MouseEvent) {
+  // HTML Elements
+  host = this.eRef.nativeElement;
+  parentEle: HTMLElement | null = null;
+  dragBar: HTMLElement | null = null;
+  bfImg: HTMLElement | null = null;
+  afImg: HTMLElement | null = null;
+
+  dragBarMouseDown(e: MouseEvent) {
     e.preventDefault();
 
     // Grab initial position of the drag bar
     this.pos3 = e.clientX;
 
-  document.onmousemove = this.dragElement.bind(this);
-  document.onmouseup = this.dragBarMouseUp.bind(this);
-}
+    document.onmousemove = this.dragElement.bind(this);
+    document.onmouseup = this.dragBarMouseUp.bind(this);
+  }
 
   dragBarMouseUp() {
     document.onmousemove = null;
@@ -31,58 +39,72 @@ dragBarMouseDown(e: MouseEvent) {
   }
 
   dragElement(e: MouseEvent): void {
-    const host = this.eRef.nativeElement;
-    const dragBar = host.querySelector('.drag-bar') as HTMLElement;
-    const parent = dragBar!.parentElement as HTMLElement;
-    const parentWidth = parent!.offsetWidth;
-    const dragBarWidth = dragBar!.offsetWidth;
+    const parentWidth = this.parentEle!.offsetWidth;
+    const dragBarWidth = this.dragBar!.offsetWidth;
 
     this.pos1 = this.pos3 - e.clientX;
     this.pos3 = e.clientX;
 
-    let newLeft = dragBar!.offsetLeft - this.pos1;
+    let newLeft = this.dragBar!.offsetLeft - this.pos1;
 
     const minLeft = 0;
     const maxLeft = parentWidth - dragBarWidth;
 
     newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
-    dragBar!.style.left = newLeft + "px";
-
-    // Set the image visibility based on the drag bar position
-    const beforeImage = host.querySelector('.before-image') as HTMLElement;
-    const afterImage = host.querySelector('.after-image') as HTMLElement;
+    this.dragBar!.style.left = newLeft + "px";
 
     const percentageVisible = (newLeft / maxLeft) * 100;
-    beforeImage!.style.clipPath = `inset(0 ${100 - percentageVisible}% 0 0)`;
-    afterImage!.style.clipPath = `inset(0 0 0 ${percentageVisible}%)`;
+    this.bfImg!.style.clipPath = `inset(0 ${100 - percentageVisible}% 0 0)`;
+    this.afImg!.style.clipPath = `inset(0 0 0 ${percentageVisible}%)`;
   }
 
   setInitialSplit(percent: number) {
-    const host = this.eRef.nativeElement;
-    const dragBar = host.querySelector('.drag-bar') as HTMLElement;
-    const beforeImage = host.querySelector('.before-image') as HTMLElement;
-    const afterImage = host.querySelector('.after-image') as HTMLElement;
-    const parent = dragBar.parentElement as HTMLElement;
-
-    const maxLeft = parent.offsetWidth - dragBar.offsetWidth;
+    const maxLeft = this.parentEle!.offsetWidth - this.dragBar!.offsetWidth;
     const initialLeft = (percent / 100) * maxLeft;
 
-    dragBar.style.left = initialLeft + 'px';
-    beforeImage.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
-    afterImage.style.clipPath = `inset(0 0 0 ${percent}%)`;
+    this.dragBar!.style.left = initialLeft + 'px';
+    this.bfImg!.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+    this.afImg!.style.clipPath = `inset(0 0 0 ${percent}%)`;
   }
 
+  removeAnimations() {
+    this.dragBar!.classList.remove('dbAni');
+    this.bfImg!.classList.remove('bfAni');
+    this.afImg!.classList.remove('afAni');
+  }
 
   ngAfterViewInit() {
-    // Fix bug where after you resize the window the bar is at a different position than the reveal
-    window.addEventListener('resize', () => {
-      this.setInitialSplit(50);
-    })
-    this.setInitialSplit(50); // 50% split to start
+    this.parentEle = this.host.querySelector('.images') as HTMLElement;
+    this.dragBar = this.host.querySelector('.drag-bar') as HTMLElement;
+    this.bfImg = this.host.querySelector('.before-image') as HTMLElement;
+    this.afImg = this.host.querySelector('.after-image') as HTMLElement;
+
+    this.setInitialSplit(50);
+
+    if(this.index === 0) {
+      this.dragBar.classList.add('dbAni');
+      this.bfImg.classList.add('bfAni');
+      this.afImg.classList.add('afAni');
+
+      document.addEventListener("click", () => {
+        this.removeAnimations();
+      })
+
+      // Fix bug where after you resize the window the bar is at a different position than the reveal
+      window.addEventListener('resize', () => {
+        this.setInitialSplit(50);
+      })
+    }
   }
 
   ngOnDestroy() {
     document.onmousemove = null;
     document.onmouseup = null;
+    window.removeEventListener('resize', () => {
+      this.setInitialSplit(50);
+    })
+    document.addEventListener("click", () => {
+      this.removeAnimations();
+    })
   }
 }
