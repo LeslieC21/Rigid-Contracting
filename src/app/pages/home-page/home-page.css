@@ -4,6 +4,9 @@
     height: calc(100vh - var(--header-height));
     padding: 0;
     margin: 0;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .background {
@@ -13,15 +16,25 @@
     background-position: center;
 
     display: flex;
-    max-height: 88%;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    padding: 2em 0;
 }
 
-.service {
-    max-height: 12%;
+.service-component {
+    height: auto;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: .5em;
+    background-color: var(--color-accent);
 }
+
 
 .CTA {
     font-family: 'Noto Sans', 'Inter';
@@ -31,19 +44,20 @@
     text-shadow: 2px 2px 2px black;
     padding: 0;
     margin: 0;
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin: 1rem 0;
 }
 
 .CTA > span {
+    font-family: 'Noto Sans', 'Inter';
     color: #F5F5F3;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 10%;
-    margin: 1rem 0;
+    align-items: center;
+    gap: 5%;
 }
 
 .social-link > button, a {
@@ -55,8 +69,8 @@
     border: 1px solid rgb(172, 172, 172);
     background-color: #F5F5F3;
     box-shadow: 2px 2px 2px #1E2124;
-    height: 4.5em;
-    width: 4.5em;
+    height: 4rem;
+    width: 4rem;
 }
 
 
@@ -68,12 +82,18 @@
 }
 
 .social_icon {
-    height: 120%;
+    height: 1.5em;
+    /* height: 120%; */
 }
 
 header {
     text-align: center;
-    margin: 2em;
+    font-size: 1rem;
+    margin: 0 2rem 2rem 2rem;
+}
+
+main {
+    padding: 4rem 10%;
 }
 
 /* Laptops/Tablets etc. */
@@ -82,7 +102,32 @@ header {
         display: none;
     }
 
-    .background {
-        height: 86vh;
+    .CTA {
+        font-size: 4.5rem;
+        margin: 1rem 0;
+    }
+
+    .social-links {
+        gap: 10%;
+        margin: 1rem 0;
+    }
+
+    .social-link > button, a {
+        height: 5rem;
+        width: 5rem;
+    }
+
+    .social_icon {
+        height: 2em;
+    }
+
+    .service-component {
+        padding: .5em;
+    }
+}
+
+@media(min-width: 1100px) {
+    #phone {
+        display: none;
     }
 }
