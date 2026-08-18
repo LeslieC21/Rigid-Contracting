@@ -41,7 +41,7 @@
     color: var(--color-accent);
     font-weight: 800;
     text-align: center;
-    text-shadow: 2px 2px 2px black;
+    text-shadow: var(--text-shadow);
     padding: 0;
     margin: 0;
     font-size: 3rem;

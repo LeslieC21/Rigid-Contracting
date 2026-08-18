@@ -1,0 +1,15 @@
+<div>
+  <div class="images">
+    <img class="before-image" [src]="project.before" alt="Interior Renovation Before Photo" />
+    <img class="after-image" [src]="project.after" alt="Interior Renovation After Photo" />
+    <div class="drag-bar" id="drag-bar" (mousedown)="dragBarMouseDown($event)"></div>
+  </div>
+
+  <div class="project_description">
+    <p class="project_info">
+      <img src="pin.png" height="20px"/> 
+      {{ project.location }}
+    </p>
+    <h2>{{ project.description }}</h2>
+  </div>
+</div>

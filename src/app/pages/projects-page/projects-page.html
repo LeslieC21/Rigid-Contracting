@@ -11,18 +11,15 @@
   <ul class="project-list">
     @for(project of bfrAfrImages; track $index) {
       <li class="project">
-        <app-bfr-aft-photos [index]="$index" [beforePhoto]="(project.before)" [afterPhoto]="(project.after)"></app-bfr-aft-photos>
-        <h2>{{ project.description }}</h2>
+        <app-bfr-aft-photos [index]="$index" [project]="(project)"></app-bfr-aft-photos>
       </li>
     }
   </ul>
 
-  <div class="plug">
-    <p>Like what you see?</p>
-    <div class="act-btn">
-        <a href="mailto:austin.richards@rigidcontractingky.com" class="quote-btn">GET A FREE QUOTE</a>
-    </div>
+  <div class="hook-component-container">
+    <app-hook-component></app-hook-component>
   </div>
+
 
   <div class="other_proj_photos">
     <h2 class="title">Additional Project Photos</h2>

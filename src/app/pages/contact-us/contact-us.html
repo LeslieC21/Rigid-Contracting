@@ -1,0 +1,56 @@
+<div class="contact_us_page">
+    <div class="form_container">
+        <header>
+            <h1>CONTACT US</h1>
+            <i>Fill out the form and we'll be in touch soon!</i>
+        </header>
+        <form>
+            <div class="form_item firstName">
+                <label for="firstName">
+                    First Name 
+                    <span>*</span>
+                </label>
+                <input type="text" id="firstName" required />
+            </div>
+
+            <div class="form_item lastName">
+                <label for="lastName">
+                    Last Name
+                    <span>*</span>
+                </label>
+                <input type="text" id="lastName" required/>
+            </div>
+
+            <div class="form_item email">
+                <label for="email">
+                    Email
+                    <span>*</span>
+                </label>
+                <input type="email" id="email" required/>
+            </div>
+
+            <div class="form_item message">
+                <label for="message">
+                    Message
+                </label>
+                <textarea></textarea>
+            </div>
+            
+            <button class="form_submit" (click)="submitForm()" id="form_submit_btn">
+                <img src="email.png" class="form_submit_img" id="form_submit_img"/>
+                <p class="form_submit_text" id="form_submit_text">SUBMIT</p>
+            </button>
+            
+        </form>
+    </div>
+    <div class="map_container">
+        <iframe
+            title="Rigid Contracting location on Google Maps"
+            [src]="mapSrc"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            >
+        </iframe>
+    </div>
+</div>

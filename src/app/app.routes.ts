@@ -16,4 +16,9 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/projects-page/projects-page').then((m) => m.ProjectsPage),
         title: 'Rigid Contracting - Projects'
     },
+    {
+        path: 'ContactUs',
+        loadComponent: () => import('./pages/contact-us/contact-us').then((m) => m.ContactUs),
+        title: 'Rigid Contracting - Contact Us'
+    }
 ];

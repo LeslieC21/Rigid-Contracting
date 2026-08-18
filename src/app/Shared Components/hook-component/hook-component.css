@@ -1,0 +1,71 @@
+.container {
+   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/hookpic.jpg);
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 4em 2em;
+    width: 100%;
+    height: 100%;
+
+    color: #f5f5f3;
+    line-height: 1.5;
+}
+
+.content {
+    max-width: 80%;
+}
+
+h1 {
+    margin: 1em 0;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.2;
+    max-width: 70%;
+    text-shadow: var(--text-shadow);
+}
+
+.act_btn {
+    display: flex;
+    color: black;
+    gap: 10px;
+    width: max-content;
+    padding: 1rem;
+    background-color: var(--color-accent);
+    border: none;
+    box-shadow: var(--box-shadow);
+    text-decoration: none;
+}
+
+.text {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.act_btn:hover {
+    box-shadow: var(--box-shadow-hover);
+}
+
+.act_btn:hover > .arrow {
+    animation: slideOut .4s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@media(min-width: 1200px) {
+    .content {
+        margin-left: 10%;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: 30px;
+    }
+}

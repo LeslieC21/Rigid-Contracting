@@ -1,5 +1,7 @@
 import { Component, Input, ElementRef, inject } from '@angular/core';
 
+import { bfrAfrModel } from '../../../projects-page/projects-page';
+
 @Component({
   selector: 'app-bfr-aft-photos',
   imports: [],
@@ -12,8 +14,7 @@ export class BfrAftPhotos {
 
   // Drag bar
   pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
-  @Input({ required: true }) beforePhoto!: string;
-  @Input({ required: true }) afterPhoto!: string;
+  @Input({ required: true }) project!: bfrAfrModel;
   @Input({ required: true}) index!: number;
 
   // HTML Elements
