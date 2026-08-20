@@ -1,0 +1,36 @@
+<div class="container">
+<h2>What areas do we serve?</h2>
+  <ul class="areas_served_list">
+    <li *ngFor="let area of serviceAreas">
+        {{ area.name }}, 
+    </li>
+    <li>and surrounding counties!</li>
+  </ul>
+  <google-map
+    [center]="center"
+    [zoom]="zoom"
+    height="500px"
+    width="100%">
+
+    <map-polygon [paths]="boundaryPath" [options]="polygonOptions"></map-polygon>
+    
+    <map-marker
+        *ngFor="let area of serviceAreas"
+        [position]="area"
+        [title]="area.name"
+        #marker="mapMarker"
+        (mapClick)="openInfoWindow(marker, area)"
+        >
+    </map-marker>
+    
+    <map-info-window>
+        <div class="info-window" *ngIf="selectedLocality">
+            <h3>{{ selectedLocality?.name }}</h3>
+            <p>{{ selectedLocality?.description }}</p>
+            <a [href]="'https://maps.google.com/?q=' + selectedLocality.lat + ',' + selectedLocality.lng" target="_blank">
+                Get Directions
+            </a>
+        </div>
+    </map-info-window>
+  </google-map>
+</div>

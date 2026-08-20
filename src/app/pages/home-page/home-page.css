@@ -132,3 +132,15 @@ main {
         display: none;
     }
 }
+
+.service_area {
+    margin: 4em 10%;
+    gap: 4em;
+}
+
+.full-length-comp {
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+    width: 100%;
+}
