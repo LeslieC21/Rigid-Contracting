@@ -2,7 +2,7 @@
     <div class="form_container">
         <header>
             <h1>CONTACT US</h1>
-            <i>Fill out the form and we'll be in touch soon!</i>
+            <i>Fill out the form and we'll be in touch soon! For quotes and general contracting questions, reach out to <b>(606) 484-0606 Austin Richards OR (859) 595-8172 Justice Reed</b> for a faster, more detailed response.</i>
         </header>
         <form>
             <div class="form_item firstName">
@@ -10,7 +10,10 @@
                     First Name 
                     <span>*</span>
                 </label>
-                <input type="text" id="firstName" required />
+                <input type="text" id="firstName" [formField]="ContactUsForm.firstName" [class.error]="ContactUsForm.firstName().invalid() && ContactUsForm.firstName().touched()"/>
+                @if(ContactUsForm.firstName().touched() && ContactUsForm.firstName().invalid()){
+                    <span>This field is required.</span>
+                }
             </div>
 
             <div class="form_item lastName">
@@ -18,7 +21,10 @@
                     Last Name
                     <span>*</span>
                 </label>
-                <input type="text" id="lastName" required/>
+                <input type="text" id="lastName" [formField]="ContactUsForm.lastName" [class.error]="ContactUsForm.lastName().invalid() && ContactUsForm.lastName().touched()"/>
+                @if(ContactUsForm.lastName().touched() && ContactUsForm.lastName().invalid()){
+                    <span>This field is required.</span>
+                }
             </div>
 
             <div class="form_item email">
@@ -26,19 +32,28 @@
                     Email
                     <span>*</span>
                 </label>
-                <input type="email" id="email" required/>
+                <input type="email" id="email" [formField]="ContactUsForm.email" [class.error]="ContactUsForm.email().invalid() && ContactUsForm.email().touched()"/>
+                @if(ContactUsForm.email().touched() && ContactUsForm.email().invalid()){
+                    @for(error of ContactUsForm.email().errors(); track error) {
+                        <span>{{ error.message }}</span>
+                    }
+                }
             </div>
 
             <div class="form_item message">
                 <label for="message">
                     Message
                 </label>
-                <textarea></textarea>
+                <textarea id="message" [formField]="ContactUsForm.message"></textarea>
+            </div>
+
+            <div class="robots-only" aria-hidden="true">
+                <input type="text" id="machine-verify" name="_gotcha" autocomplete="off" tabindex="-1"/>
             </div>
             
-            <button class="form_submit" (click)="submitForm()" id="form_submit_btn">
+            <button (click)="submitForm($event)" class="form_submit" id="form_submit_btn">
                 <img src="email.png" class="form_submit_img" id="form_submit_img"/>
-                <p class="form_submit_text" id="form_submit_text">SUBMIT</p>
+                <p class="form_submit_text" id="form_submit_text">SEND</p>
             </button>
             
         </form>
