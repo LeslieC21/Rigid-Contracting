@@ -36,17 +36,19 @@
 
 .services-grid {
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(4, 1fr);
    gap: 1px;
    max-width: 1500px;
    margin: 0 auto;
-   box-shadow: 1px 1px 6px 4px rgba(44, 44, 44, 0.384);
+   /* box-shadow: 1px 1px 6px 4px rgba(44, 44, 44, 0.384); */
 }
 
 .card {
    padding: 40px 26px;
    position: relative;
    transition: background 0.25s ease;
+   border: 1px solid #888888;
+   /* box-shadow: 1px 1px 6px 4px rgba(44, 44, 44, 0.384); */
 }
 
 .card:hover {
