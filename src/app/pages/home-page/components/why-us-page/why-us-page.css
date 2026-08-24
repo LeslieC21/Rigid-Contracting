@@ -4,6 +4,7 @@
 
 .container {
    padding: 50px 20px;
+   background-color: #f5f5f3;
 }
 
 .section-header {
@@ -37,34 +38,24 @@
 .services-grid {
    display: grid;
    grid-template-columns: repeat(4, 1fr);
-   gap: 1px;
+   gap: 10px;
    max-width: 1500px;
    margin: 0 auto;
-   /* box-shadow: 1px 1px 6px 4px rgba(44, 44, 44, 0.384); */
 }
 
 .card {
    padding: 40px 26px;
    position: relative;
    transition: background 0.25s ease;
-   border: 1px solid #888888;
+   /* border: 1px solid #888888; */
+   border: 1px solid #fff;
+   border-radius: 10px;
+   background-color: #fff;
    /* box-shadow: 1px 1px 6px 4px rgba(44, 44, 44, 0.384); */
 }
 
 .card:hover {
    background: #e4e4e4;
-}
-
-.card .tag {
-   font-size: 0.7rem;
-   letter-spacing: 1.5px;
-   color: var(--color-header);
-   display: block;
-   margin-bottom: 22px;
-}
-
-.card:hover .tag {
-   color: var(--color-accent);
 }
 
 .icon-wrap {

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { email, form, FormField, required, submit } from '@angular/forms/signals';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { debounce } from 'rxjs';
+import { ContactusCard } from './contactus-card/contactus-card'
 
 interface contactUsForm {
   firstName: string;
@@ -13,7 +13,7 @@ interface contactUsForm {
 
 @Component({
   selector: 'app-contact-us',
-  imports: [FormField],
+  imports: [FormField, ContactusCard],
   templateUrl: './contact-us.html',
   styleUrl: './contact-us.css',
 })
