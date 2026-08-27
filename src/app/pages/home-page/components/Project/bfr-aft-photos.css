@@ -1,14 +1,14 @@
 .card-container {
   border-radius: 8px;
-  /* background-color: #fff; */
+  background-color: #fff;
   padding: 1rem;
   /* box-shadow: var(--box-shadow); */
 }
 
-.card-container:hover {
+/* .card-container:hover {
   box-shadow: var(--box-shadow);
   background-color: #fff;
-}
+} */
 
 .drag-bar {
   position: absolute;

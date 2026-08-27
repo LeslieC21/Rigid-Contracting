@@ -1,9 +1,22 @@
 .container {
     background-color: #fff;
     padding: 3em;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 2em;
     background-color: var(--color-accent);
 
@@ -13,12 +26,53 @@ section {
     outline: 3px solid var(--color-accent);
 }
 
+header {
+    margin-bottom: 1rem;
+}
+
+header p {
+    text-align: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .icon-wrap {
     height: 1.5rem;
     width: 1.5rem;
+
+    margin-right: 5px;
 }
 
 .icon-wrap svg {
     height: 100%;
     width: 100%;
+}
+
+span {
+    display: flex;
+    justify-content: center;
+}
+
+
+.owners {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    margin: 1em;
+}
+
+.owner {
+    text-align: center;
+    margin: auto;
+}
+
+.address {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 1rem 0;
 }
