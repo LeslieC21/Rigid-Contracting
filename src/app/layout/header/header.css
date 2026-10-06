@@ -7,11 +7,16 @@
   height: var(--header-height);
   box-shadow: 0px 2px 4px 2px rgb(17, 17, 17);
   z-index: 300;
+  width: 100%;
 }
 
 .site_logo {
-    max-height: 100%;
+    height: var(--header-height);
+    width: auto;
     padding: .8rem;
+    box-sizing: border-box;
+    object-fit: contain;
+
 }
 
 .header_nav_mobile {
@@ -22,10 +27,12 @@
 
 .header_logo {
     display: flex;
+    flex-shrink: 0;
+    height: 100%;
 }
 
 .header_logo > a {
-    width: 4em;
+    display: flex;
 }
 
 .title {
@@ -64,7 +71,7 @@
     margin-left: auto;
     border: none;
     background: none;
-    font-size: larger;
+    font-size: 1.5rem;
 }
 
 .navbar_items {
@@ -73,7 +80,6 @@
 }
 
 .navbar_item {
-    
     border-radius: 4px;
     width: 100%;
     margin: .8rem 0;
@@ -93,7 +99,7 @@
     border: none;
     color: var(--color-text);
     font-weight: 500;
-    font-size: large;
+    font-size: 1.5rem;
     width: 100%;
     display: block;
 }

@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, inject } from '@angular/core';
+import { Component, Input, ElementRef, inject, signal } from '@angular/core';
 
 import { bfrAfrModel } from '../../../projects-page/projects-page';
 
@@ -14,8 +14,12 @@ export class BfrAftPhotos {
 
   // Drag bar
   pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
+  isDragging = signal<boolean>(false);
   @Input({ required: true }) project!: bfrAfrModel;
   @Input({ required: true}) index!: number;
+  private percent = 50;
+  private onDocClick = () => this.freezeAnimation();
+  private onResize = () => this.applySplit(this.percent);
 
   // HTML Elements
   host = this.eRef.nativeElement;
@@ -24,54 +28,52 @@ export class BfrAftPhotos {
   bfImg: HTMLElement | null = null;
   afImg: HTMLElement | null = null;
 
-  dragBarMouseDown(e: MouseEvent) {
+  dragBarPointerDown(e: PointerEvent) {
     e.preventDefault();
 
-    // Grab initial position of the drag bar
+    this.freezeAnimation();
+    this.isDragging.set(true);
     this.pos3 = e.clientX;
 
-    document.onmousemove = this.dragElement.bind(this);
-    document.onmouseup = this.dragBarMouseUp.bind(this);
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   }
 
-  dragBarMouseUp() {
-    document.onmousemove = null;
-    document.onmouseup = null;
+  dragBarPointerUp(e: PointerEvent) {
+    this.isDragging.set(false);
+    (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
   }
 
-  dragElement(e: MouseEvent): void {
-    const parentWidth = this.parentEle!.offsetWidth;
-    const dragBarWidth = this.dragBar!.offsetWidth;
+  dragElement(e: PointerEvent): void {
+    if (!this.isDragging()) return;
 
-    this.pos1 = this.pos3 - e.clientX;
-    this.pos3 = e.clientX;
+    const rect = this.parentEle!.getBoundingClientRect();
+    const barWidth = this.dragBar!.offsetWidth;
+    const maxLeft = rect.width - barWidth;
 
-    let newLeft = this.dragBar!.offsetLeft - this.pos1;
-
-    const minLeft = 0;
-    const maxLeft = parentWidth - dragBarWidth;
-
-    newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
-    this.dragBar!.style.left = newLeft + "px";
-
-    const percentageVisible = (newLeft / maxLeft) * 100;
-    this.bfImg!.style.clipPath = `inset(0 ${100 - percentageVisible}% 0 0)`;
-    this.afImg!.style.clipPath = `inset(0 0 0 ${percentageVisible}%)`;
+    // Center bar under pointer
+    const newLeft = Math.max(0, Math.min(e.clientX - rect.left - barWidth / 2, maxLeft));
+    this.applySplit((newLeft / maxLeft) * 100);
   }
 
-  setInitialSplit(percent: number) {
+  applySplit(percent: number) {
+    this.percent = percent;
     const maxLeft = this.parentEle!.offsetWidth - this.dragBar!.offsetWidth;
-    const initialLeft = (percent / 100) * maxLeft;
-
-    this.dragBar!.style.left = initialLeft + 'px';
+    this.dragBar!.style.left = (percent / 100) * maxLeft + 'px'
     this.bfImg!.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
     this.afImg!.style.clipPath = `inset(0 0 0 ${percent}%)`;
   }
 
-  removeAnimations() {
+  freezeAnimation() {
+    if (!this.dragBar!.classList.contains('dbAni')) return;
+
+    const maxLeft = this.parentEle!.offsetWidth - this.dragBar!.offsetWidth;
+    const percent = (this.dragBar!.offsetLeft / maxLeft) * 100;
+
     this.dragBar!.classList.remove('dbAni');
     this.bfImg!.classList.remove('bfAni');
     this.afImg!.classList.remove('afAni');
+
+    this.applySplit(percent);
   }
 
   ngAfterViewInit() {
@@ -80,32 +82,20 @@ export class BfrAftPhotos {
     this.bfImg = this.host.querySelector('.before-image') as HTMLElement;
     this.afImg = this.host.querySelector('.after-image') as HTMLElement;
 
-    this.setInitialSplit(50);
+    this.applySplit(50);
 
     if(this.index === 0) {
       this.dragBar.classList.add('dbAni');
       this.bfImg.classList.add('bfAni');
       this.afImg.classList.add('afAni');
 
-      document.addEventListener("click", () => {
-        this.removeAnimations();
-      })
-
-      // Fix bug where after you resize the window the bar is at a different position than the reveal
-      window.addEventListener('resize', () => {
-        this.setInitialSplit(50);
-      })
+      document.addEventListener("click", this.onDocClick)
     }
+    window.addEventListener('resize', this.onResize);
   }
 
   ngOnDestroy() {
-    document.onmousemove = null;
-    document.onmouseup = null;
-    window.removeEventListener('resize', () => {
-      this.setInitialSplit(50);
-    })
-    document.addEventListener("click", () => {
-      this.removeAnimations();
-    })
+    window.removeEventListener('resize', this.onResize)
+    document.addEventListener("click", this.onDocClick)
   }
 }

@@ -2,7 +2,14 @@
   <div class="images">
     <img class="before-image" [src]="project.before" alt="Interior Renovation Before Photo" />
     <img class="after-image" [src]="project.after" alt="Interior Renovation After Photo" />
-    <div class="drag-bar" id="drag-bar" (mousedown)="dragBarMouseDown($event)"></div>
+    <div 
+    class="drag-bar" 
+    id="drag-bar" 
+    (pointerdown)="dragBarPointerDown($event)"
+    (pointermove)="dragElement($event)"
+    (pointerup)="dragBarPointerUp($event)"
+    (pointercancel)="dragBarPointerUp($event)"
+    ></div>
   </div>
 
   <div class="project_description">
