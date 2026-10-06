@@ -27,7 +27,7 @@ export class ProjectsPage {
     { description: 'Garage Construction', location: 'Mt. Sterling, KY', before: '/barn1.jpg', after: '/barn2.jpg' },
   ]
   
-  projectPhotos = ["airViewBuilding.jpg", "barn1.jpg", "barn2.jpg"]
+  projectPhotos = ["airViewBuilding.jpg", "barn1.jpg"]
   currentPhoto = signal(0);
   private timer: ReturnType<typeof setInterval> | undefined;
 

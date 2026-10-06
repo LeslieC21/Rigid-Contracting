@@ -2,7 +2,13 @@
     <div class="form_container">
         <header>
             <h1>CONTACT US</h1>
-            <i>Fill out the form and we'll be in touch soon! For quotes and general contracting questions, reach out to <b>(606) 484-0606 Austin Richards OR (859) 595-8172 Justice Reed</b> for a faster, more detailed response.</i>
+            <div class="header-body">
+                <i>Fill out the form and we'll be in touch soon! For quotes and general contracting questions, reach out to one of us for a faster, more detailed response.</i>
+                <br />
+                <i>
+                    <b>(606) 484-0606 Austin Richards | (859) 595-8172 Justice Reed</b>
+                </i>
+            </div>
         </header>
         <form>
             <div class="form_item firstName">
@@ -10,8 +16,8 @@
                     First Name 
                     <span>*</span>
                 </label>
-                <input type="text" id="firstName" [formField]="ContactUsForm.firstName" [class.error]="ContactUsForm.firstName().invalid() && ContactUsForm.firstName().touched()"/>
-                @if(ContactUsForm.firstName().touched() && ContactUsForm.firstName().invalid()){
+                <input type="text" id="firstName" [formField]="ContactUsForm.firstName" [class.error]="ContactUsForm.firstName().invalid() && ContactUsForm.firstName().touched() && sentMessage()"/>
+                @if(ContactUsForm.firstName().touched() && ContactUsForm.firstName().invalid() && sentMessage()){
                     <span>This field is required.</span>
                 }
             </div>
@@ -21,8 +27,8 @@
                     Last Name
                     <span>*</span>
                 </label>
-                <input type="text" id="lastName" [formField]="ContactUsForm.lastName" [class.error]="ContactUsForm.lastName().invalid() && ContactUsForm.lastName().touched()"/>
-                @if(ContactUsForm.lastName().touched() && ContactUsForm.lastName().invalid()){
+                <input type="text" id="lastName" [formField]="ContactUsForm.lastName" [class.error]="ContactUsForm.lastName().invalid() && ContactUsForm.lastName().touched() && sentMessage()"/>
+                @if(ContactUsForm.lastName().touched() && ContactUsForm.lastName().invalid() && sentMessage()){
                     <span>This field is required.</span>
                 }
             </div>
@@ -32,8 +38,8 @@
                     Email
                     <span>*</span>
                 </label>
-                <input type="email" id="email" [formField]="ContactUsForm.email" [class.error]="ContactUsForm.email().invalid() && ContactUsForm.email().touched()"/>
-                @if(ContactUsForm.email().touched() && ContactUsForm.email().invalid()){
+                <input type="email" id="email" [formField]="ContactUsForm.email" [class.error]="ContactUsForm.email().invalid() && ContactUsForm.email().touched() && sentMessage()"/>
+                @if(ContactUsForm.email().touched() && ContactUsForm.email().invalid() && sentMessage()){
                     @for(error of ContactUsForm.email().errors(); track error) {
                         <span>{{ error.message }}</span>
                     }
@@ -48,7 +54,7 @@
             </div>
 
             <div class="robots-only" aria-hidden="true">
-                <input type="text" id="machine-verify" name="_gotcha" autocomplete="off" tabindex="-1"/>
+                <input type="text" id="machine_verify" name="_gotcha" autocomplete="off" tabindex="-1"/>
             </div>
             
             <button (click)="submitForm($event)" class="form_submit" id="form_submit_btn">
