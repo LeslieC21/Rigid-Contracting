@@ -14,7 +14,8 @@ export class ServiceArea {
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
   selectedLocality: any = null;
   center: google.maps.LatLngLiteral = { lat: 38.1, lng: -83.7 };
-    zoom = 10;
+  browserWidth =  window.innerWidth;
+  zoom = this.browserWidth > 700 ? 10 : 9;
   
     localities = [
       { lat: 38.000, lng: -84.320},  // Clark Co.

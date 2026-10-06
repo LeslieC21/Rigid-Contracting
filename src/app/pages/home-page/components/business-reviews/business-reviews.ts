@@ -11,6 +11,6 @@ export class BusinessReviews {
   reviews = [
     { projectType:"Demolition", name: "Tanna Combs Crouch", stars: 5, reviewDesc: "We love everything you all have done and highly recommend this company." }, 
     { projectType:"Repair & Restoration", name: "All Spark Electric", stars: 5, reviewDesc: "Rigid Contracting, we appreciate your assistance on this project, which involved multiple repairs to restore its original appearance after the removal of the old service. We look forward to collaborating with you again in the future..." } ,
-    { projectType:"Demolition", name: "Tanna Combs Crouch", stars: 5, reviewDesc: "We love everything you all have done and highly recommend this company." } 
+    { projectType:"Repair & Restoration", name: "Dana True", stars: 5, reviewDesc: "Rigid Contracting helped me fix my damaged chimney cap when water was getting in my house. It looks amazing and have not experienced any issues since, thank you!" } 
   ]
 }

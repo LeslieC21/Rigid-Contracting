@@ -16,6 +16,7 @@
 
 .star-container {
    display: flex;
+   justify-content: center;
 }
 
 .section-header h2 {
@@ -37,18 +38,21 @@
 }
 
 .review-grid {
-   display: grid;
+   display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
    grid-template-columns: repeat(3, 1fr);
-   gap: 1px;
+   gap: 2rem;
    max-width: 1500px;
    margin: 0 auto;
 }
 
 .review {
-   padding: 40px 26px;
+   /* padding: 40px 26px; */
    position: relative;
-   transition: background 0.25s ease;
+   /* transition: background 0.25s ease; */
    max-width: 400px;
+   text-align: center;
 }
 
 .review .tag {

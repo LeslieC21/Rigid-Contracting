@@ -1,7 +1,9 @@
 .container {
+    display: flex;
+    justify-content: center;
     background-color: #fff;
     padding: 3em;
-    max-width: 1200px;
+    width: 100%;
     margin: auto;
 }
 
@@ -31,6 +33,7 @@ section {
     align-items: center;
     padding: 2em;
     background-color: var(--color-accent);
+    max-width: 1200px;
 
     border: 9px solid #fff;
     border-radius: 15px;
@@ -46,12 +49,13 @@ header p {
     text-align: center;
 }
 
-body {
+.body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .icon-wrap {
     height: 1.5rem;
     width: 1.5rem;
@@ -91,7 +95,6 @@ span {
 
 @media(max-width: 600px) {
     .container {
-        display: flex;
         flex-direction: column;
         padding: 1rem;
         text-align: center;

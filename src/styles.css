@@ -22,11 +22,17 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--color-header);
+    /* background-color: var(--color-bg); */
+    /* background-color: var(--color-header); */
 }
 
 html {
     min-height: 100vh;
+    background-color: var(--color-header);
+}
+
+body {
+    background-color: var(--color-bg);
 }
 
 button {
