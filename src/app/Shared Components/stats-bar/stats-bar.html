@@ -1,18 +1,28 @@
-<div class="stats-bar" #statsBar id="statusBar">
+<!-- <div class="stats-bar" #statsBar id="statusBar">
     <div class="stat">
-        <span class="num" #statNum data-target="30" data-suffix="+">0</span>
+        <span class="num" #statNum data-target="30" data-suffix="+">30</span>
         <span class="label">Years Combined Experience</span>
     </div>
     <div class="stat">
-        <span class="num" #statNum data-target="20" data-suffix="+">0</span>
+        <span class="num" #statNum data-target="20" data-suffix="+">20</span>
         <span class="label">Projects Completed</span>
     </div>
     <div class="stat">
-        <span class="num" #statNum data-target="100" data-suffix="%">0</span>
+        <span class="num" #statNum data-target="100" data-suffix="%">100</span>
         <span class="label">Satisfaction Guarantee</span>
     </div>
     <div class="stat">
-        <span class="num" #statNum data-target="100" data-suffix="%">0</span>
+        <span class="num" #statNum data-target="100" data-suffix="%">100</span>
         <span class="label">Licensed & Insured</span>
     </div>
+</div> -->
+<div class="stats-bar" #statsBar>
+  @for (stat of stats; track stat.label) {
+    <div class="stat">
+      <span class="num" #statNum [attr.data-target]="stat.target" [attr.data-suffix]="stat.suffix">
+        {{ stat.target }}{{ stat.suffix }}
+      </span>
+      <span class="label">{{ stat.label }}</span>
+    </div>
+  }
 </div>
